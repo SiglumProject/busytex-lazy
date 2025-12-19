@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+bun.lock
+
+# BusyTeX WASM binaries (build from submodule or download)
+busytex.js
+busytex.wasm
+
+# Build artifacts
+*.log
+*.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# CTAN cache (regeneratable)
+packages/cache/
+
+# Local development
+packages/ctan-packages/
+packages/local-packages/
+
+# Broken directories from command typos
+-o/
+-sL/
+cat/
+curl/
+https:/

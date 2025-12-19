@@ -1,0 +1,3 @@
+[submodule "busytex"]
+	path = busytex
+	url = git@github.com:busytex/busytex.git

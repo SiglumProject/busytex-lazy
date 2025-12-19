@@ -1,0 +1,1468 @@
+{
+  "$comment": "Package dependencies extracted from bundle .sty files. Maps package name to list of required packages.",
+  "packages": {
+    "ae": [
+      "fontenc"
+    ],
+    "algorithm2e": [
+      "color",
+      "endfloat",
+      "ifoddpage",
+      "ifthen",
+      "relsize",
+      "tocbibind",
+      "xspace"
+    ],
+    "aliascnt": [
+      "remreset"
+    ],
+    "amsbsy": [
+      "amsgen"
+    ],
+    "amscd": [
+      "amsgen"
+    ],
+    "amsmath": [
+      "amsbsy",
+      "amsopn",
+      "amstext"
+    ],
+    "amsmath-2018-12-01": [
+      "amsbsy",
+      "amsopn",
+      "amstext"
+    ],
+    "amsopn": [
+      "amsgen"
+    ],
+    "amssymb": [
+      "amsfonts"
+    ],
+    "amstex": [
+      "amsmath",
+      "amstex12beta"
+    ],
+    "amstext": [
+      "amsgen"
+    ],
+    "amsxtra": [
+      "amsmath"
+    ],
+    "arabxetex": [
+      "amsmath",
+      "bidi",
+      "fontspec"
+    ],
+    "atbegshi": [
+      "iftex",
+      "infwarerr",
+      "ltxcmds"
+    ],
+    "auto-pst-pdf-lua": [
+      "ifluatex",
+      "ifpdf",
+      "ifplatform",
+      "pst-pdf",
+      "xkeyval"
+    ],
+    "awesomebox": [
+      "array",
+      "fontawesome5",
+      "ifthen",
+      "xcolor",
+      "xparse"
+    ],
+    "babelbib": [
+      "babel"
+    ],
+    "backref": [
+      "kvoptions",
+      "kvsetkeys",
+      "ltxcmds",
+      "rerunfilecheck"
+    ],
+    "beamerarticle": [
+      "beamerbasearticle",
+      "beamerbasemodes"
+    ],
+    "beamerbasearticle": [
+      "beamerbaseoptions",
+      "beamerbaserequires",
+      "hyperref",
+      "inputenc",
+      "xcolor"
+    ],
+    "beamerbaseauxtemplates": [
+      "beamerbaseboxes"
+    ],
+    "beamerbasecompatibility": [
+      "beamerpatchparalist"
+    ],
+    "beamerbasefont": [
+      "amssymb",
+      "sansmathaccent"
+    ],
+    "beamerbaselocalstructure": [
+      "enumerate"
+    ],
+    "beamerbasemodes": [
+      "beamerbasedecode",
+      "etoolbox"
+    ],
+    "beamerbasenotes": [
+      "pgfpages"
+    ],
+    "beamerbaseoptions": [
+      "keyval"
+    ],
+    "beamerbaserequires": [
+      "beamerbasecolor",
+      "beamerbasecompatibility",
+      "beamerbasefont",
+      "beamerbaseframe",
+      "beamerbaseframecomponents",
+      "beamerbaseframesize",
+      "beamerbaselocalstructure",
+      "beamerbasemisc",
+      "beamerbasenavigation",
+      "beamerbasenotes",
+      "beamerbaseoverlay",
+      "beamerbasesection",
+      "beamerbasetemplates",
+      "beamerbasethemes",
+      "beamerbasetheorems",
+      "beamerbasetitle",
+      "beamerbasetoc",
+      "beamerbasetranslator",
+      "beamerbasetwoscreens",
+      "beamerbaseverbatim"
+    ],
+    "beamerbasetemplates": [
+      "beamerbaseauxtemplates"
+    ],
+    "beamerbasethemes": [
+      "#3\\beamer@themename"
+    ],
+    "beamerbasetheorems": [
+      "amsmath",
+      "amsthm"
+    ],
+    "beamerbasetranslator": [
+      "translator"
+    ],
+    "beamerbasetwoscreens": [
+      "pgfpages"
+    ],
+    "bezierplot": [
+      "iftex",
+      "xparse"
+    ],
+    "bicaption": [
+      "caption"
+    ],
+    "bidi-atbegshi": [
+      "atbegshi-ltx"
+    ],
+    "bidicontour": [
+      "color",
+      "trig"
+    ],
+    "bidipagegrid": [
+      "atbegshi",
+      "kvoptions",
+      "tikz"
+    ],
+    "bidishadowtext": [
+      "color"
+    ],
+    "bigintcalc": [
+      "pdftexcmds"
+    ],
+    "bitset": [
+      "bigintcalc",
+      "infwarerr",
+      "intcalc"
+    ],
+    "bmhydoc": [
+      "bookmark",
+      "pifont"
+    ],
+    "bmpsize": [
+      "bmpsize-base",
+      "graphics",
+      "iftex",
+      "infwarerr",
+      "keyval",
+      "pdftexcmds"
+    ],
+    "bmpsize-base": [
+      "fp-basic",
+      "fp-snap",
+      "pdftexcmds"
+    ],
+    "bookmark": [
+      "hyperref"
+    ],
+    "bugtracker": [
+      "hyperref",
+      "listings",
+      "pgfplotstable"
+    ],
+    "caption": [
+      "caption-light",
+      "caption3",
+      "ltcaption"
+    ],
+    "caption-light": [
+      "caption3"
+    ],
+    "caption2": [
+      "caption3"
+    ],
+    "caption3": [
+      "#1",
+      "keyval"
+    ],
+    "caption3_2007-04-11": [
+      "keyval",
+      "ragged2e"
+    ],
+    "caption3_2010-01-14": [
+      "keyval",
+      "ragged2e"
+    ],
+    "caption3_2011-11-01": [
+      "keyval",
+      "newfloat",
+      "ragged2e"
+    ],
+    "caption3_2019-09-01": [
+      "#1",
+      "keyval",
+      "newfloat"
+    ],
+    "caption3_2020-07-29": [
+      "#1",
+      "keyval"
+    ],
+    "caption3_2020-10-26": [
+      "#1",
+      "keyval"
+    ],
+    "caption_2007-04-16": [
+      "caption3"
+    ],
+    "caption_2010-01-09": [
+      "caption3",
+      "ltcaption"
+    ],
+    "caption_2011-11-10": [
+      "caption3",
+      "ltcaption",
+      "newfloat"
+    ],
+    "caption_2019-09-01": [
+      "caption3",
+      "ltcaption"
+    ],
+    "caption_2020-07-29": [
+      "caption3",
+      "ltcaption"
+    ],
+    "caption_2020-10-26": [
+      "caption3",
+      "ltcaption"
+    ],
+    "chemarr": [
+      "amsmath"
+    ],
+    "circuitikz": [
+      "siunitx",
+      "tikz",
+      "xstring"
+    ],
+    "cloze": [
+      "fontspec",
+      "kvoptions",
+      "luatexbase-mcb",
+      "setspace",
+      "stackengine",
+      "transparent",
+      "ulem",
+      "xcolor",
+      "xparse"
+    ],
+    "colortbl": [
+      "array",
+      "color"
+    ],
+    "combofont": [
+      "xfp",
+      "xparse"
+    ],
+    "concrete": [
+      "beton",
+      "euler"
+    ],
+    "cqubeamer": [
+      "bookmark",
+      "etoolbox",
+      "hyperref",
+      "perpage"
+    ],
+    "cstypo": [
+      "ifluatex"
+    ],
+    "ctikzmanutils": [
+      "a4wide",
+      "accsupp",
+      "booktabs",
+      "framed",
+      "hyperref",
+      "ifthen",
+      "ragged2e",
+      "showexpl",
+      "textcomp",
+      "titlesec",
+      "titling",
+      "upgreek",
+      "xparse",
+      "xtab"
+    ],
+    "dcolumn": [
+      "array"
+    ],
+    "delarray": [
+      "array"
+    ],
+    "doc": [
+      "hypdoc",
+      "multicol"
+    ],
+    "doc-2016-02-15": [
+      "multicol"
+    ],
+    "doc-2021-06-01": [
+      "multicol"
+    ],
+    "docstrip-luacode": [
+      "iftex"
+    ],
+    "dotlessj": [
+      "color"
+    ],
+    "ekdosis": [
+      "etoolbox",
+      "expkv-def",
+      "expkv-opt",
+      "ifoddpage",
+      "iftex",
+      "keyfloat",
+      "lineno",
+      "ltxcmds",
+      "luacode",
+      "paracol",
+      "parnotes",
+      "pdftexcmds",
+      "refcount",
+      "tcolorbox",
+      "trivfloat",
+      "verse",
+      "zref-abspage",
+      "zref-user"
+    ],
+    "emojicite": [
+      "emoji",
+      "natbib",
+      "xparse"
+    ],
+    "empheq": [
+      "mathtools",
+      "mhsetup"
+    ],
+    "engord": [
+      "infwarerr",
+      "ltxcmds"
+    ],
+    "enigma": [
+      "luatexbase"
+    ],
+    "enparen": [
+      "atveryend",
+      "kvoptions",
+      "kvsetkeys",
+      "ltxcmds",
+      "protecteddef",
+      "uniquecounter",
+      "zref-base"
+    ],
+    "environ": [
+      "trimspaces"
+    ],
+    "eolgrab": [
+      "infwarerr",
+      "ltxcmds"
+    ],
+    "epsfig": [
+      "graphicx"
+    ],
+    "epstopdf": [
+      "epstopdf-base",
+      "grfext",
+      "infwarerr",
+      "kvoptions",
+      "pdftexcmds"
+    ],
+    "epstopdf-base": [
+      "epstopdf",
+      "grfext",
+      "infwarerr",
+      "kvoptions",
+      "pdftexcmds"
+    ],
+    "etexcmds": [
+      "iftex",
+      "infwarerr"
+    ],
+    "etoolbox": [
+      "etex"
+    ],
+    "fancyheadings": [
+      "fancyhdr"
+    ],
+    "fibnum": [
+      "bigintcalc",
+      "intcalc",
+      "ltxcmds"
+    ],
+    "filehook": [
+      "filehook-2019",
+      "filehook-2020"
+    ],
+    "filehook-2019": [
+      "filehook-fink",
+      "filehook-memoir",
+      "filehook-scrlfile",
+      "kvoptions"
+    ],
+    "filehook-fink": [
+      "currfile",
+      "filehook"
+    ],
+    "filehook-memoir": [
+      "filehook"
+    ],
+    "filehook-scrlfile": [
+      "filehook"
+    ],
+    "fixlatvian": [
+      "caption",
+      "etoolbox",
+      "icomma",
+      "indentfirst",
+      "perpage",
+      "polyglossia",
+      "svn-prov",
+      "xstring"
+    ],
+    "fltrace": [
+      "flafter"
+    ],
+    "fontawesome5": [
+      "expl3",
+      "fontawesome5-generic-helper",
+      "fontawesome5-utex-helper",
+      "l3keys2e",
+      "xparse"
+    ],
+    "fontawesome5-utex-helper": [
+      "luatexbase"
+    ],
+    "fontbook": [
+      "etoolbox",
+      "fontspec",
+      "kvoptions",
+      "xunicode"
+    ],
+    "fontspec": [
+      "fontspec-luatex",
+      "fontspec-xetex",
+      "luaotfload",
+      "xparse"
+    ],
+    "fontspec-doc-style": [
+      "booktabs",
+      "caption",
+      "docmute",
+      "fancyvrb",
+      "flafter",
+      "fontspec",
+      "framed",
+      "graphicx",
+      "hologo",
+      "ifthen",
+      "luatex85",
+      "microtype",
+      "tocloft",
+      "url",
+      "varioref",
+      "varwidth",
+      "xcolor",
+      "xparse"
+    ],
+    "fontspec-luatex": [
+      "fontenc",
+      "xparse"
+    ],
+    "fontspec-xetex": [
+      "fontenc",
+      "xparse"
+    ],
+    "fontwrap": [
+      "fontspec",
+      "perltex",
+      "xltxtra",
+      "xunicode"
+    ],
+    "geometry": [
+      "atbegshi",
+      "ifvtex",
+      "keyval"
+    ],
+    "gettitlestring": [
+      "kvoptions"
+    ],
+    "graphics": [
+      "trig"
+    ],
+    "graphics-2017-06-25": [
+      "trig"
+    ],
+    "graphicx": [
+      "graphics",
+      "keyval"
+    ],
+    "grfext": [
+      "infwarerr",
+      "kvdefinekeys"
+    ],
+    "grffile": [
+      "graphicx"
+    ],
+    "grffile-2017-06-30": [
+      "graphics",
+      "ifpdf",
+      "ifxetex",
+      "kvoptions",
+      "pdftexcmds",
+      "stringenc"
+    ],
+    "helvet": [
+      "keyval"
+    ],
+    "holtxdoc": [
+      "array",
+      "fontspec",
+      "hologo",
+      "hypdoc",
+      "hyperref",
+      "ltxcmds",
+      "pdftexcmds",
+      "unicode-math"
+    ],
+    "hopatch-2016-05-16": [
+      "ltxcmds"
+    ],
+    "hypcap": [
+      "letltxmacro"
+    ],
+    "hyperref": [
+      "atbegshi",
+      "auxhook",
+      "backref",
+      "bitset",
+      "color",
+      "etexcmds",
+      "expl3",
+      "hycolor",
+      "iftex",
+      "infwarerr",
+      "intcalc",
+      "keyval",
+      "kvdefinekeys",
+      "kvoptions",
+      "kvsetkeys",
+      "letltxmacro",
+      "ltxcmds",
+      "nameref",
+      "pdfescape",
+      "pdftexcmds",
+      "stringenc",
+      "url"
+    ],
+    "hypgotoe": [
+      "hyperref",
+      "iftex",
+      "pdfescape"
+    ],
+    "hyphsubst": [
+      "infwarerr"
+    ],
+    "ifetex": [
+      "iftex"
+    ],
+    "iflang": [
+      "infwarerr",
+      "pdftexcmds"
+    ],
+    "ifluatex": [
+      "iftex"
+    ],
+    "ifpdf": [
+      "iftex"
+    ],
+    "ifplatform": [
+      "catchfile",
+      "ifluatex",
+      "pdftexcmds",
+      "shellesc"
+    ],
+    "ifvtex": [
+      "iftex"
+    ],
+    "ifxetex": [
+      "iftex"
+    ],
+    "interchar": [
+      "expl3",
+      "xparse"
+    ],
+    "kvoptions": [
+      "keyval",
+      "kvoptions-patch",
+      "kvsetkeys",
+      "ltxcmds"
+    ],
+    "kvoptions-patch": [
+      "etexcmds"
+    ],
+    "l3keys2e": [
+      "expl3"
+    ],
+    "letterspace": [
+      "keyval"
+    ],
+    "ligtype": [
+      "ifluatex",
+      "luatexbase"
+    ],
+    "linebreaker": [
+      "luatexbase"
+    ],
+    "linsys": [
+      "array",
+      "pifont"
+    ],
+    "lscape": [
+      "graphics"
+    ],
+    "lt3luabridge": [
+      "expl3"
+    ],
+    "ltxtable": [
+      "longtable",
+      "tabularx"
+    ],
+    "lua-typo": [
+      "atveryend",
+      "kvoptions",
+      "luacode",
+      "luacolor",
+      "luatexbase"
+    ],
+    "lua-typo-2021-04-18": [
+      "atveryend",
+      "kvoptions",
+      "luacode",
+      "luacolor",
+      "luatexbase"
+    ],
+    "lua-ul": [
+      "luacolor"
+    ],
+    "lua-visual-debug": [
+      "atbegshi",
+      "ifluatex"
+    ],
+    "lua-widow-control-2022-02-22": [
+      "etoolbox",
+      "microtype"
+    ],
+    "luacas": [
+      "iftex",
+      "luacode",
+      "mathtools",
+      "pgfkeys",
+      "tikz",
+      "verbatim",
+      "xcolor",
+      "xparse"
+    ],
+    "luacensor": [
+      "accsupp",
+      "environ",
+      "fontspec",
+      "graphicx",
+      "luacode",
+      "verbatim",
+      "xcolor"
+    ],
+    "luacode": [
+      "ifluatex",
+      "luatexbase"
+    ],
+    "luacolor": [
+      "atbegshi",
+      "color"
+    ],
+    "luacomplex": [
+      "amsmath",
+      "luacode",
+      "luamaths",
+      "xkeyval"
+    ],
+    "luagcd": [
+      "luacode"
+    ],
+    "luaimageembed": [
+      "luacode"
+    ],
+    "luaindex": [
+      "ifluatex",
+      "luatexbase-compat",
+      "luatexbase-modutils",
+      "scrbase"
+    ],
+    "luainputenc": [
+      "ifluatex",
+      "ifxetex",
+      "inputenc",
+      "luatexbase",
+      "xetex-inputenc"
+    ],
+    "lualatex-math": [
+      "expl3"
+    ],
+    "lualatex-truncate": [
+      "iftex",
+      "letltxmacro",
+      "truncate"
+    ],
+    "lualinalg": [
+      "amsmath",
+      "luacode",
+      "luamaths",
+      "xkeyval"
+    ],
+    "luamathalign": [
+      "iftex"
+    ],
+    "luamaths": [
+      "amsmath",
+      "luacode",
+      "xkeyval"
+    ],
+    "luamodulartables": [
+      "luacode",
+      "xkeyval"
+    ],
+    "luaoptions": [
+      "luaotfload",
+      "luatexbase",
+      "xkeyval"
+    ],
+    "luapackageloader": [
+      "ifluatex"
+    ],
+    "luaprogtable": [
+      "expl3",
+      "iftex",
+      "luatexbase",
+      "xparse"
+    ],
+    "luaquotes": [
+      "fontspec",
+      "iftex",
+      "luacode"
+    ],
+    "luarandom": [
+      "ifluatex",
+      "luacode"
+    ],
+    "luaset": [
+      "amsmath",
+      "luacode",
+      "luamaths",
+      "xkeyval"
+    ],
+    "luatexbase": [
+      "ctablestack"
+    ],
+    "luatexbase-attr": [
+      "luatexbase"
+    ],
+    "luatexbase-cctb": [
+      "luatexbase"
+    ],
+    "luatexbase-compat": [
+      "luatexbase"
+    ],
+    "luatexbase-loader": [
+      "luatexbase"
+    ],
+    "luatexbase-mcb": [
+      "luatexbase"
+    ],
+    "luatexbase-modutils": [
+      "luatexbase"
+    ],
+    "luatexbase-regs": [
+      "luatexbase"
+    ],
+    "luatexko": [
+      "fontspec",
+      "kolabels-utf",
+      "konames-utf",
+      "luatexbase"
+    ],
+    "luatextra": [
+      "fixltx2e",
+      "fontspec",
+      "ifluatex",
+      "luacode",
+      "luatexbase",
+      "metalogo"
+    ],
+    "luatruthtable": [
+      "amsmath",
+      "luacode",
+      "xkeyval"
+    ],
+    "luavlna": [
+      "kvoptions"
+    ],
+    "lutabulartools": [
+      "array",
+      "booktabs",
+      "colortbl",
+      "luacode",
+      "makecell",
+      "multirow",
+      "penlight",
+      "xcolor",
+      "xparse"
+    ],
+    "mathtools": [
+      "amsmath",
+      "calc",
+      "graphicx",
+      "keyval",
+      "mhsetup"
+    ],
+    "mdframed": [
+      "#1",
+      "color",
+      "etoolbox",
+      "kvoptions",
+      "needspace",
+      "xcolor",
+      "xparse",
+      "zref-abspage"
+    ],
+    "microtype": [
+      "etoolbox",
+      "keyval"
+    ],
+    "microtype-show": [
+      "graphicx",
+      "iftex",
+      "microtype",
+      "xcolor"
+    ],
+    "minitoc-hyper": [
+      "minitoc"
+    ],
+    "multimedia": [
+      "ifpdf",
+      "keyval"
+    ],
+    "multimediasymbols": [
+      "keyval",
+      "pgf"
+    ],
+    "na-position": [
+      "tkz-tab"
+    ],
+    "nameref": [
+      "gettitlestring",
+      "ltxcmds",
+      "refcount"
+    ],
+    "natbib": [
+      "citeref"
+    ],
+    "newlfont": [
+      "latexsym"
+    ],
+    "newpax": [
+      "auxhook",
+      "etoolbox",
+      "graphicx",
+      "kvoptions",
+      "kvsetkeys",
+      "ltxcmds",
+      "pdfmanagement-testphase",
+      "xfp"
+    ],
+    "nodetree": [
+      "kvoptions"
+    ],
+    "nodetree-embed": [
+      "expl3",
+      "fontspec",
+      "kvoptions",
+      "mdframed",
+      "xcolor",
+      "xparse"
+    ],
+    "nohyperref": [
+      "letltxmacro"
+    ],
+    "ntheorem-hyper": [
+      "ntheorem"
+    ],
+    "odsfile": [
+      "luacode",
+      "xkeyval",
+      "xparse"
+    ],
+    "oldlfont": [
+      "latexsym",
+      "tracefnt"
+    ],
+    "pagesel-2016-05-16": [
+      "everyshi"
+    ],
+    "pdfcolparallel": [
+      "infwarerr",
+      "keyval",
+      "parallel",
+      "pdfcol"
+    ],
+    "pdfcolparcolumns": [
+      "infwarerr",
+      "parcolumns",
+      "pdfcol"
+    ],
+    "pdfcrypt": [
+      "infwarerr",
+      "keyval"
+    ],
+    "pdfescape": [
+      "ltxcmds",
+      "pdftexcmds"
+    ],
+    "pdfpages": [
+      "calc",
+      "count1to",
+      "eso-pic",
+      "etoolbox",
+      "graphicx",
+      "ifthen",
+      "pdflscape"
+    ],
+    "pdftexcmds": [
+      "iftex",
+      "infwarerr",
+      "ltxcmds"
+    ],
+    "penlight": [
+      "luacode"
+    ],
+    "pgf": [
+      "pgfbasedecorations",
+      "pgfbasematrix",
+      "pgfbasesnakes",
+      "pgfcomp-version-0-65",
+      "pgfcomp-version-1-18",
+      "pgfcore",
+      "pgfrcs"
+    ],
+    "pgf-filehook": [
+      "filehook",
+      "pgfkeys"
+    ],
+    "pgfarrows": [
+      "pgf",
+      "pgfrcs"
+    ],
+    "pgfautomata": [
+      "pgf",
+      "pgfrcs"
+    ],
+    "pgfbaseimage": [
+      "pgfcore"
+    ],
+    "pgfbaselayers": [
+      "pgfcore"
+    ],
+    "pgfbasematrix": [
+      "pgfcore"
+    ],
+    "pgfbasepatterns": [
+      "pgfcore"
+    ],
+    "pgfbaseplot": [
+      "pgfcore"
+    ],
+    "pgfbaseshapes": [
+      "pgfcore"
+    ],
+    "pgfbasesnakes": [
+      "pgfcore"
+    ],
+    "pgfcalendar": [
+      "pgfkeys",
+      "pgfrcs"
+    ],
+    "pgfcomp-version-0-65": [
+      "pgfrcs"
+    ],
+    "pgfcomp-version-1-18": [
+      "pgfrcs"
+    ],
+    "pgfcore": [
+      "graphicx",
+      "keyval",
+      "pgfsys",
+      "xcolor"
+    ],
+    "pgffor": [
+      "pgfkeys",
+      "pgfmath",
+      "pgfrcs"
+    ],
+    "pgfheaps": [
+      "pgf",
+      "pgfrcs"
+    ],
+    "pgflibraryarrows": [
+      "pgfcore"
+    ],
+    "pgflibraryautomata": [
+      "pgfcore"
+    ],
+    "pgflibraryplothandlers": [
+      "pgfcore"
+    ],
+    "pgflibraryplotmarks": [
+      "pgfcore"
+    ],
+    "pgflibraryshapes": [
+      "pgfcore"
+    ],
+    "pgflibrarysnakes": [
+      "pgfcore"
+    ],
+    "pgflibrarytikzbackgrounds": [
+      "tikz"
+    ],
+    "pgflibrarytikztrees": [
+      "tikz"
+    ],
+    "pgfmath": [
+      "pgfkeys",
+      "pgfrcs"
+    ],
+    "pgfnodes": [
+      "pgf",
+      "pgfrcs"
+    ],
+    "pgfpages": [
+      "calc",
+      "pgfcore"
+    ],
+    "pgfparser": [
+      "pgfkeys",
+      "pgfrcs"
+    ],
+    "pgfpict2e": [
+      "pgfcore"
+    ],
+    "pgfplots": [
+      "graphicx",
+      "luatexbase",
+      "pgf",
+      "tikz"
+    ],
+    "pgfplotsoldpgfsupp_tikzexternal": [
+      "graphicx"
+    ],
+    "pgfplotstable": [
+      "array",
+      "pgfplots"
+    ],
+    "pgfregressiontest": [
+      "tikz"
+    ],
+    "pgfshade": [
+      "pgf",
+      "pgfrcs"
+    ],
+    "pgfsys": [
+      "pgfrcs"
+    ],
+    "philokalia": [
+      "lettrine",
+      "xltxtra"
+    ],
+    "piton": [
+      "l3keys2e",
+      "luacode"
+    ],
+    "placeat": [
+      "atbegshi",
+      "luacode",
+      "luatexbase",
+      "xparse"
+    ],
+    "plantuml": [
+      "adjustbox",
+      "fancyvrb",
+      "ifthen",
+      "l3keys2e",
+      "luacode",
+      "pdftexcmds",
+      "pythontex",
+      "tikz",
+      "xparse"
+    ],
+    "ptext": [
+      "biditools"
+    ],
+    "pyluatex": [
+      "atveryend",
+      "expl3",
+      "kvoptions"
+    ],
+    "rawfonts": [
+      "somedefs"
+    ],
+    "realscripts": [
+      "fontspec"
+    ],
+    "refcount": [
+      "infwarerr",
+      "ltxcmds"
+    ],
+    "rerunfilecheck": [
+      "atveryend",
+      "infwarerr",
+      "kvoptions",
+      "pdftexcmds",
+      "uniquecounter"
+    ],
+    "resizegather": [
+      "amsmath",
+      "graphics",
+      "kvoptions"
+    ],
+    "rotating": [
+      "graphicx",
+      "ifthen"
+    ],
+    "rotchiffre": [
+      "infwarerr",
+      "ltxcmds",
+      "pdfescape"
+    ],
+    "scikgtex": [
+      "hyperref",
+      "suffix"
+    ],
+    "scrindex": [
+      "index"
+    ],
+    "selnolig": [
+      "ifluatex",
+      "luatexbase",
+      "selnolig-english-hyphex",
+      "selnolig-english-patterns",
+      "selnolig-german-hyphex",
+      "selnolig-german-patterns"
+    ],
+    "selnolig-german-hyphex": [
+      "ifluatex"
+    ],
+    "setouterhbox": [
+      "infwarerr"
+    ],
+    "showhyphenation": [
+      "ifluatex",
+      "luatexbase"
+    ],
+    "showkerning": [
+      "ifluatex",
+      "luatexbase"
+    ],
+    "showkeys": [
+      "color"
+    ],
+    "showkeys-2014-10-28": [
+      "color"
+    ],
+    "siunitx-v2": [
+      "amstext",
+      "array",
+      "expl3",
+      "l3keys2e",
+      "xparse"
+    ],
+    "spacekern": [
+      "ifluatex",
+      "luatexbase"
+    ],
+    "spelling": [
+      "atbegshi",
+      "ifluatex",
+      "luatexbase-attr",
+      "luatexbase-mcb",
+      "luatexbase-modutils"
+    ],
+    "stackrel": [
+      "etexcmds",
+      "pdftexcmds"
+    ],
+    "stampinclude": [
+      "pdftexcmds"
+    ],
+    "stringenc": [
+      "infwarerr",
+      "ltxcmds",
+      "pdfescape"
+    ],
+    "subcaption": [
+      "caption"
+    ],
+    "tabularht": [
+      "iftex"
+    ],
+    "tabularkv": [
+      "keyval",
+      "tabularht"
+    ],
+    "tabularx": [
+      "array"
+    ],
+    "tcolorbox": [
+      "environ",
+      "etoolbox",
+      "pgf",
+      "tikz",
+      "verbatim"
+    ],
+    "tcolorbox.doc.s_main": [
+      "\\tcbpkgprefix tcolorbox",
+      "accsupp",
+      "amsmath",
+      "amssymb",
+      "array",
+      "babel",
+      "bookmark",
+      "calc",
+      "empheq",
+      "fancyhdr",
+      "fontenc",
+      "geometry",
+      "grffile",
+      "hyperref",
+      "ifthen",
+      "incgraph",
+      "lipsum",
+      "lmodern",
+      "minted2",
+      "parskip",
+      "tabularray",
+      "tabularx",
+      "tikz",
+      "varwidth",
+      "xcolor",
+      "zref-clever",
+      "zref-titleref",
+      "zref-vario"
+    ],
+    "tcolorbox.doc.s_snippet": [
+      "amsthm",
+      "zref-clever"
+    ],
+    "thrmappendix": [
+      "ifthen"
+    ],
+    "tikz": [
+      "pgf",
+      "pgffor"
+    ],
+    "tikzexternal": [
+      "graphicx"
+    ],
+    "topcapt": [
+      "..."
+    ],
+    "truthtable": [
+      "luacode"
+    ],
+    "tsvtemplate": [
+      "environ"
+    ],
+    "typewriter": [
+      "luaotfload"
+    ],
+    "ucharclasses": [
+      "ifxetex"
+    ],
+    "unicode-math": [
+      "expl3"
+    ],
+    "unicode-math-luatex": [
+      "amsmath",
+      "fix-cm",
+      "fontspec",
+      "l3keys2e",
+      "lualatex-math",
+      "xparse"
+    ],
+    "unicode-math-xetex": [
+      "amsmath",
+      "fix-cm",
+      "fontspec",
+      "l3keys2e",
+      "xparse"
+    ],
+    "uninormalize": [
+      "kvoptions",
+      "luacode",
+      "luatexbase"
+    ],
+    "uniquecounter": [
+      "bigintcalc",
+      "infwarerr"
+    ],
+    "unisugar": [
+      "ifxetex"
+    ],
+    "xcolor": [
+      "colortbl",
+      "pdfcolmk"
+    ],
+    "xcolor-patch": [
+      "hopatch"
+    ],
+    "xechangebar": [
+      "\\cb@color@pkg"
+    ],
+    "xecolor": [
+      "fontspec",
+      "iftex"
+    ],
+    "xecyr": [
+      "ifluatex",
+      "ifxetex",
+      "inputenc",
+      "luatextra",
+      "misccorr",
+      "xltxtra",
+      "xunicode"
+    ],
+    "xeindex": [
+      "makeidx",
+      "xesearch"
+    ],
+    "xespotcolor": [
+      "color",
+      "graphics",
+      "iftex",
+      "xcolor"
+    ],
+    "xetexko": [
+      "fontspec",
+      "kolabels-utf",
+      "konames-utf"
+    ],
+    "xetexko-font": [
+      "xetexko"
+    ],
+    "xetexko-hanging": [
+      "xetexko"
+    ],
+    "xetexko-josa": [
+      "xetexko"
+    ],
+    "xetexko-space": [
+      "xetexko"
+    ],
+    "xetexko-vertical": [
+      "xetexko"
+    ],
+    "xfp": [
+      "expl3"
+    ],
+    "xfrac": [
+      "amstext",
+      "expl3",
+      "graphicx",
+      "l3keys2e",
+      "textcomp",
+      "xparse",
+      "xtemplate"
+    ],
+    "xmpmulti": [
+      "keyval",
+      "pause"
+    ],
+    "xparse": [
+      "expl3"
+    ],
+    "xparse-2018-04-12": [
+      "expl3"
+    ],
+    "xparse-2020-10-01": [
+      "expl3"
+    ],
+    "xtemplate": [
+      "expl3"
+    ],
+    "xtemplate-2023-10-10": [
+      "expl3"
+    ],
+    "xxcolor": [
+      "xcolor"
+    ],
+    "yamlvars": [
+      "etoolbox",
+      "luacode",
+      "penlight",
+      "xspace"
+    ],
+    "zb-basics": [
+      "amsfonts",
+      "amsmath",
+      "amssymb",
+      "gensymb",
+      "mathrsfs",
+      "mathtools",
+      "stmaryrd",
+      "textcomp",
+      "tikz-cd"
+    ]
+  }
+}
