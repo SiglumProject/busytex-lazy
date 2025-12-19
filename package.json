@@ -1,0 +1,43 @@
+{
+  "name": "busytex-lazy",
+  "version": "0.1.0",
+  "description": "Browser-based LaTeX compilation with lazy loading and CTAN package resolution",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./compiler": "./src/compiler.js",
+    "./bundles": "./src/bundles.js",
+    "./ctan": "./src/ctan.js",
+    "./storage": "./src/storage.js"
+  },
+  "files": [
+    "src/",
+    "busytex.js",
+    "busytex.wasm",
+    "packages/bundles/"
+  ],
+  "scripts": {
+    "demo": "python3 -m http.server 8080",
+    "proxy": "cd packages && bun run ctan-proxy.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiglumProject/busytex-lazy.git"
+  },
+  "keywords": [
+    "latex",
+    "tex",
+    "pdf",
+    "wasm",
+    "webassembly",
+    "browser",
+    "compilation"
+  ],
+  "author": "Siglum Project",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SiglumProject/busytex-lazy/issues"
+  },
+  "homepage": "https://github.com/SiglumProject/busytex-lazy#readme"
+}

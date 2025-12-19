@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BusyTeX Lazy Loading Demo</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif; max-width: 1200px; margin: 0 auto; padding: 40px 20px; color: #1d1d1f; background: #fff; }
+        h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 8px; }
+        p { color: #86868b; margin-bottom: 24px; }
+        h3 { font-size: 13px; font-weight: 500; color: #86868b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; height: 55vh; min-height: 400px; margin-bottom: 16px; }
+        .container > div { display: flex; flex-direction: column; min-height: 0; }
+        textarea { flex: 1; width: 100%; font-family: 'SF Mono', Menlo, monospace; font-size: 13px; padding: 16px; border: 1px solid #d2d2d7; border-radius: 12px; resize: none; outline: none; transition: border-color 0.2s; }
+        textarea:focus { border-color: #0071e3; }
+        #pdfViewer { flex: 1; width: 100%; border-radius: 12px; overflow-y: auto; background: #f5f5f7; }
+        #pdfViewer .page-container { margin: 16px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-radius: 4px; overflow: hidden; }
+        #pdfViewer canvas { display: block; }
+        .controls { margin-bottom: 20px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        button { padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; background: #0071e3; color: #fff; border: none; border-radius: 8px; transition: opacity 0.2s; }
+        button:hover { opacity: 0.85; }
+        button:disabled { opacity: 0.4; cursor: not-allowed; }
+        button.secondary { background: #f5f5f7; color: #1d1d1f; }
+        button.secondary:hover { background: #e8e8ed; }
+        select { padding: 8px 12px; font-size: 13px; border: 1px solid #d2d2d7; border-radius: 8px; background: #fff; outline: none; }
+        label { font-size: 13px; color: #1d1d1f; display: flex; align-items: center; gap: 6px; }
+        input[type="checkbox"] { width: 16px; height: 16px; accent-color: #0071e3; }
+        #status { margin-top: 16px; padding: 16px; background: #f5f5f7; border-radius: 12px; font-family: 'SF Mono', Menlo, monospace; font-size: 11px; max-height: 200px; overflow-y: auto; white-space: pre-wrap; color: #1d1d1f; }
+        .stats { padding: 12px 16px; background: #f5f5f7; border-radius: 10px; font-size: 12px; margin-bottom: 16px; color: #86868b; }
+        .stats strong { color: #1d1d1f; font-weight: 500; }
+        #time { font-size: 13px; color: #86868b; font-weight: 500; }
+        #renderStats { font-weight: 400; font-size: 11px; color: #86868b; }
+    </style>
+</head>
+<body>
+    <h1>BusyTeX Lazy Loading Demo</h1>
+    <p>This demo uses the busytex-lazy library as an ES module. Files are fetched individually as TeX requests them.</p>
+
+    <div class="stats" id="stats">
+        <strong>Bundles:</strong> <span id="bundleCount">0</span> |
+        <strong>Bytes downloaded:</strong> <span id="bytesDownloaded">0</span> KB |
+        <strong>Cache hits:</strong> <span id="cacheHits">0</span> |
+        <strong>CTAN fetches:</strong> <span id="ctanCount">0</span> |
+        <strong>Status:</strong> <span id="compilerStatus">Not initialized</span>
+    </div>
+
+    <div class="controls">
+        <button id="compileBtn" disabled>Compile</button>
+        <select id="engineSelect">
+            <option value="auto">Auto-detect engine</option>
+            <option value="xelatex">XeLaTeX (Unicode/fonts)</option>
+            <option value="pdflatex">pdfLaTeX (simple docs)</option>
+        </select>
+        <label>
+            <input type="checkbox" id="enableCtan" checked>
+            Enable CTAN fetch
+        </label>
+        <label>
+            <input type="checkbox" id="enableLazyFS" checked>
+            Lazy FS
+        </label>
+        <label>
+            <input type="checkbox" id="enableDocCache" checked>
+            Document cache
+        </label>
+        <label>
+            <input type="checkbox" id="enableAutoCompile">
+            Auto-compile
+        </label>
+        <label>
+            <input type="checkbox" id="enableKeyupCompile">
+            Compile on keyup
+        </label>
+        <button id="formatBtn" class="secondary">Generate Format</button>
+        <button id="clearCacheBtn" class="secondary">Clear Cache</button>
+        <span id="time"></span>
+    </div>
+
+    <div id="missingPackages"></div>
+
+    <div class="container">
+        <div>
+            <h3>LaTeX Source</h3>
+            <textarea id="source">\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+Hello, world!
+
+$E = mc^2$
+
+\end{document}</textarea>
+        </div>
+        <div>
+            <h3>PDF Preview <span id="renderStats" style="font-weight: normal; font-size: 12px; color: #666;"></span></h3>
+            <div id="pdfViewer"></div>
+        </div>
+    </div>
+
+    <div id="status">Ready. Click "Compile" to start.</div>
+
+    <!-- PDF.js for rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs" type="module"></script>
+
+    <script type="module">
+        import { BusyTeXCompiler, detectEngine } from './src/index.js';
+
+        // PDF.js setup
+        const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs');
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
+
+        // ============================================================
+        // Incremental PDF Viewer - Only re-renders changed pages
+        // ============================================================
+        const IncrementalPDFViewer = {
+            container: null,
+            pageCache: new Map(),  // pageNum -> { hash, canvas }
+            currentPdf: null,
+            scale: 1.5,
+            lastRenderStats: { total: 0, rerendered: 0, cached: 0 },
+
+            init(containerId) {
+                this.container = document.getElementById(containerId);
+            },
+
+            async hashPage(page) {
+                const textContent = await page.getTextContent();
+                const textStr = textContent.items.map(item => item.str || '').join('');
+                const ops = await page.getOperatorList();
+                const opsStr = ops.fnArray.join(',');
+                const combined = textStr + '|' + opsStr + '|' + ops.argsArray.length;
+                let hash = 5381;
+                for (let i = 0; i < combined.length; i++) {
+                    hash = ((hash << 5) + hash) + combined.charCodeAt(i);
+                    hash = hash & hash;
+                }
+                return hash;
+            },
+
+            async render(pdfBytes) {
+                const startTime = performance.now();
+                const pdf = await pdfjsLib.getDocument({ data: pdfBytes }).promise;
+                const numPages = pdf.numPages;
+
+                let rerendered = 0;
+                let cached = 0;
+
+                this.ensurePageContainers(numPages);
+
+                for (let i = 1; i <= numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const hash = await this.hashPage(page);
+                    const cachedPage = this.pageCache.get(i);
+
+                    if (cachedPage && cachedPage.hash === hash) {
+                        cached++;
+                        continue;
+                    }
+
+                    rerendered++;
+                    const canvas = await this.renderPage(page, i);
+                    this.pageCache.set(i, { hash, canvas });
+                }
+
+                for (let i = numPages + 1; this.pageCache.has(i); i++) {
+                    this.pageCache.delete(i);
+                }
+
+                while (this.container.children.length > numPages) {
+                    this.container.removeChild(this.container.lastChild);
+                }
+
+                this.currentPdf = pdf;
+                const renderTime = performance.now() - startTime;
+                this.lastRenderStats = { total: numPages, rerendered, cached };
+
+                const statsEl = document.getElementById('renderStats');
+                if (statsEl) {
+                    if (cached > 0) {
+                        statsEl.textContent = `(${rerendered}/${numPages} pages rendered, ${cached} cached, ${renderTime.toFixed(0)}ms)`;
+                        statsEl.style.color = '#2e7d32';
+                    } else {
+                        statsEl.textContent = `(${numPages} pages, ${renderTime.toFixed(0)}ms)`;
+                        statsEl.style.color = '#666';
+                    }
+                }
+
+                return this.lastRenderStats;
+            },
+
+            ensurePageContainers(numPages) {
+                for (let i = this.container.children.length; i < numPages; i++) {
+                    const pageContainer = document.createElement('div');
+                    pageContainer.className = 'page-container';
+                    pageContainer.dataset.pageNum = i + 1;
+                    const canvas = document.createElement('canvas');
+                    pageContainer.appendChild(canvas);
+                    this.container.appendChild(pageContainer);
+                }
+            },
+
+            async renderPage(page, pageNum) {
+                const viewport = page.getViewport({ scale: this.scale });
+                const container = this.container.children[pageNum - 1];
+                const displayCanvas = container.querySelector('canvas');
+
+                const offscreen = document.createElement('canvas');
+                offscreen.width = viewport.width;
+                offscreen.height = viewport.height;
+                const offscreenCtx = offscreen.getContext('2d');
+
+                await page.render({
+                    canvasContext: offscreenCtx,
+                    viewport: viewport
+                }).promise;
+
+                displayCanvas.width = viewport.width;
+                displayCanvas.height = viewport.height;
+                const displayCtx = displayCanvas.getContext('2d');
+                displayCtx.drawImage(offscreen, 0, 0);
+
+                return displayCanvas;
+            },
+
+            clear() {
+                this.pageCache.clear();
+                this.container.innerHTML = '';
+                this.currentPdf = null;
+            }
+        };
+
+        IncrementalPDFViewer.init('pdfViewer');
+
+        let compiler = null;
+        let compileTimeout = null;
+        let autoCompileEnabled = false;
+
+        function log(msg) {
+            const status = document.getElementById('status');
+            status.textContent += msg + '\n';
+            status.scrollTop = status.scrollHeight;
+        }
+
+        function updateStatus(text) {
+            document.getElementById('compilerStatus').textContent = text;
+        }
+
+        function updateStats() {
+            if (!compiler) return;
+            const stats = compiler.getStats();
+            document.getElementById('bundleCount').textContent = stats.bundles.bundlesCached;
+            document.getElementById('bytesDownloaded').textContent = (stats.bundles.bytesDownloaded / 1024).toFixed(0);
+            document.getElementById('cacheHits').textContent = stats.bundles.cacheHits;
+            document.getElementById('ctanCount').textContent = stats.ctan.fetchCount;
+        }
+
+        async function init() {
+            log('Initializing compiler...');
+            updateStatus('Initializing...');
+
+            compiler = new BusyTeXCompiler({
+                bundlesUrl: 'packages/bundles',
+                wasmUrl: 'busytex.wasm',
+                ctanProxyUrl: 'http://localhost:8081',
+                enableCtan: document.getElementById('enableCtan').checked,
+                enableLazyFS: document.getElementById('enableLazyFS').checked,
+                enableDocCache: document.getElementById('enableDocCache').checked,
+                onLog: log,
+                onProgress: (stage, detail) => {
+                    updateStatus(`${stage}: ${detail || ''}`);
+                },
+            });
+
+            await compiler.init();
+            updateStatus('Ready');
+            document.getElementById('compileBtn').disabled = false;
+            log('Compiler ready!');
+            updateStats();
+        }
+
+        async function compile() {
+            console.log('compile() called');
+            const source = document.getElementById('source').value;
+            const engineSelect = document.getElementById('engineSelect').value;
+            const engine = engineSelect === 'auto' ? detectEngine(source) : engineSelect;
+            console.log('Engine:', engine, 'Source length:', source.length);
+
+            // Update compiler options from checkboxes
+            compiler.enableCtan = document.getElementById('enableCtan').checked;
+            compiler.enableLazyFS = document.getElementById('enableLazyFS').checked;
+            compiler.enableDocCache = document.getElementById('enableDocCache').checked;
+
+            document.getElementById('compileBtn').disabled = true;
+            document.getElementById('status').textContent = '';
+            log('Compiling with ' + engine + '...');
+
+            const startTime = performance.now();
+
+            try {
+                const result = await compiler.compile(source, { engine });
+
+                const elapsed = performance.now() - startTime;
+                document.getElementById('time').textContent = `${elapsed.toFixed(0)}ms`;
+
+                if (result.success) {
+                    log('Compilation successful!');
+                    if (result.cached) {
+                        log('(from cache)');
+                    }
+                    await IncrementalPDFViewer.render(result.pdf);
+                } else {
+                    log('Compilation failed: ' + (result.error || 'Unknown error'));
+                    if (result.log) {
+                        log('--- TeX Log ---');
+                        log(result.log);
+                    }
+                }
+            } catch (e) {
+                log('Error: ' + e.message);
+                console.error(e);
+            }
+
+            document.getElementById('compileBtn').disabled = false;
+            updateStatus('Ready');
+            updateStats();
+        }
+
+        async function generateFormat() {
+            const source = document.getElementById('source').value;
+            const engineSelect = document.getElementById('engineSelect').value;
+            const engine = engineSelect === 'auto' ? detectEngine(source) : engineSelect;
+
+            document.getElementById('compileBtn').disabled = true;
+            document.getElementById('status').textContent = '';
+            log('Generating format for ' + engine + '...');
+
+            try {
+                await compiler.generateFormat(source, { engine });
+                log('Format generated successfully!');
+            } catch (e) {
+                log('Format generation error: ' + e.message);
+                console.error(e);
+            }
+
+            document.getElementById('compileBtn').disabled = false;
+            updateStatus('Ready');
+        }
+
+        async function clearCache() {
+            if (compiler) {
+                await compiler.clearCache();
+                log('Cache cleared');
+                updateStats();
+            }
+        }
+
+        function scheduleAutoCompile() {
+            if (compileTimeout) {
+                clearTimeout(compileTimeout);
+            }
+            compileTimeout = setTimeout(() => {
+                if (!document.getElementById('compileBtn').disabled) {
+                    compile();
+                }
+            }, 500);
+        }
+
+        // Event listeners for auto-compile
+        document.getElementById('source').addEventListener('input', () => {
+            if (document.getElementById('enableAutoCompile').checked) {
+                scheduleAutoCompile();
+            }
+        });
+
+        document.getElementById('source').addEventListener('keyup', () => {
+            if (document.getElementById('enableKeyupCompile').checked) {
+                scheduleAutoCompile();
+            }
+        });
+
+        // Button event listeners
+        document.getElementById('compileBtn').addEventListener('click', () => {
+            compile().catch(e => {
+                log('Compile error: ' + e.message);
+                console.error(e);
+            });
+        });
+
+        document.getElementById('formatBtn').addEventListener('click', () => {
+            generateFormat().catch(e => {
+                log('Format error: ' + e.message);
+                console.error(e);
+            });
+        });
+
+        document.getElementById('clearCacheBtn').addEventListener('click', () => {
+            clearCache().catch(e => {
+                log('Clear cache error: ' + e.message);
+                console.error(e);
+            });
+        });
+
+        // Initialize on load
+        init().catch(e => {
+            log('Init error: ' + e.message);
+            console.error(e);
+        });
+    </script>
+</body>
+</html>
