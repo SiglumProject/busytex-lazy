@@ -7,8 +7,20 @@ busytex.js
 busytex.wasm
 
 # Build artifacts
+dist/
 *.log
 *.txt
+
+# Compressed WASM (deploy artifact)
+busytex.wasm.br
+
+# Cloudflare infrastructure (separate project)
+cloudflare/
+wrangler.toml
+.wrangler/
+
+# GitHub Actions (not configured yet)
+.github/
 
 # OS files
 .DS_Store

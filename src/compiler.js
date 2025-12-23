@@ -357,8 +357,9 @@ export class BusyTeXCompiler {
             }
         }
 
-        // Check for cached aux files
-        const auxCache = await getAuxCache(preambleHash);
+        // Check for cached aux files (include format state in key to avoid mismatch)
+        const auxCacheKey = cachedFormat ? preambleHash + '_fmt' : preambleHash;
+        const auxCache = await getAuxCache(auxCacheKey);
 
         // Send compile request
         this.onProgress('compiling', 'Compiling...');
@@ -385,9 +386,9 @@ export class BusyTeXCompiler {
                             await saveCachedPdf(docHash, engine, result.pdfData);
                         }
 
-                        // Cache aux files
+                        // Cache aux files (use same key that includes format state)
                         if (result.auxFilesToCache) {
-                            await saveAuxCache(preambleHash, result.auxFilesToCache);
+                            await saveAuxCache(auxCacheKey, result.auxFilesToCache);
                         }
 
                         resolve({
