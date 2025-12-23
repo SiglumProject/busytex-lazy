@@ -41,6 +41,7 @@
   },
   "homepage": "https://github.com/SiglumProject/busytex-lazy#readme",
   "dependencies": {
-    "jszip": "^3.10.1"
+    "jszip": "^3.10.1",
+    "xzwasm": "^0.1.2"
   }
 }

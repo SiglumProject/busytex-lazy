@@ -274,14 +274,16 @@ export class BusyTeXCompiler {
                 }
             }
 
+            // Copy bundleData before transfer so original stays valid in cache
+            const bundleDataCopy = bundleData.slice(0);
             this.worker.postMessage({
                 type: 'bundle-fetch-response',
                 requestId,
                 bundleName,
                 success: true,
-                bundleData,
+                bundleData: bundleDataCopy,
                 bundleMeta,
-            }, [bundleData]);
+            }, [bundleDataCopy]);
         } catch (e) {
             this._log('Bundle fetch error: ' + e.message);
             this.worker.postMessage({
@@ -327,6 +329,17 @@ export class BusyTeXCompiler {
 
         // Get CTAN files from memory cache (populated by previous fetches)
         const ctanFiles = this.ctanFetcher.getCachedFiles();
+
+        // Merge in any additional files provided by the user
+        const additionalFiles = options.additionalFiles || {};
+        for (const [filename, content] of Object.entries(additionalFiles)) {
+            // Convert string content to Uint8Array
+            const data = typeof content === 'string'
+                ? new TextEncoder().encode(content)
+                : content;
+            // Mount in current directory (will be found by TeX)
+            ctanFiles['/' + filename] = data;
+        }
 
         // Check for cached format
         let cachedFormat = null;

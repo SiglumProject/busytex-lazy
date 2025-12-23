@@ -87,6 +87,7 @@ const compiler = new BusyTeXCompiler({
 const result = await compiler.compile(source, {
     engine: 'pdflatex',  // 'pdflatex' | 'xelatex' | 'lualatex' (auto-detected if not specified)
     useCache: true,      // Use cached PDF if available
+    additionalFiles: {}, // Custom files to include (see below)
 });
 
 // Result object
@@ -99,6 +100,49 @@ const result = await compiler.compile(source, {
     stats: object,       // Compilation statistics
 }
 ```
+
+### Custom Files (additionalFiles)
+
+You can include custom `.sty`, `.cls`, `.bib`, images, or any other files that aren't available in TeX Live or CTAN:
+
+```javascript
+// From file input or drag & drop
+const fileInput = document.getElementById('fileInput');
+const additionalFiles = {};
+
+for (const file of fileInput.files) {
+    const content = await file.arrayBuffer();
+    additionalFiles[file.name] = new Uint8Array(content);
+}
+
+// Or programmatically
+additionalFiles['custom.sty'] = new TextEncoder().encode(`
+\\ProvidesPackage{custom}
+\\newcommand{\\hello}{Hello from custom package!}
+`);
+
+// Include in compilation
+const result = await compiler.compile(source, { additionalFiles });
+```
+
+### Custom Fonts
+
+**XeLaTeX/LuaLaTeX** can use custom OpenType/TrueType fonts via fontspec:
+
+```latex
+\documentclass{article}
+\usepackage{fontspec}
+\setmainfont[Path=./]{MyCustomFont.otf}
+\begin{document}
+Hello with my custom font!
+\end{document}
+```
+
+Upload `MyCustomFont.otf` or `.ttf` file, then reference it with `Path=./` to load from the working directory.
+
+**pdfLaTeX** cannot use uploaded fonts directly - it requires pre-installed TeX fonts with `.tfm`, `.pfb`, and font map entries. Use the bundled fonts (Computer Modern, Latin Modern, cm-super) or switch to XeLaTeX.
+
+**Supported upload formats:** `.sty`, `.cls`, `.bst`, `.bib`, `.tex`, `.png`, `.jpg`, `.pdf`, `.eps`, `.otf`, `.ttf`, `.woff`, `.woff2`
 
 ## Prerequisites
 

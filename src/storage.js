@@ -2,7 +2,7 @@
 
 const IDB_NAME = 'siglum-ctan-cache';
 const IDB_STORE = 'packages';
-const CTAN_CACHE_VERSION = 6;
+const CTAN_CACHE_VERSION = 7;
 const BUNDLE_CACHE_VERSION = 4;
 
 let idbCache = null;
